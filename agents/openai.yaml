@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bubble 剧情·事件·引导配置"
+  short_description: "统一处理 Bubble 剧情、事件与新手引导配置的团队工作流"
+  default_prompt: "Use $bubble-story-event-guide-config to process pending Bubble story, event, and tutorial configuration requests."
