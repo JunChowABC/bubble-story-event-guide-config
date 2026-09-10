@@ -3,7 +3,7 @@ name: bubble-story-event-guide-config
 description: Configure Bubble project stories, dialogues, events, and new-player tutorials through the team's request pools, output-copy-only workflow, project evidence, ID allocation, cross-table linking, and QA. Use for 剧情、事件、事件内对话、新手引导、需求池待配置 or related work under the two AI configuration directories; do not use for unrelated Bubble configuration tables.
 metadata:
   author: Bubble project
-  version: "1.1.1"
+  version: "1.2.0"
 ---
 
 # Bubble 剧情、事件与新手引导配置
