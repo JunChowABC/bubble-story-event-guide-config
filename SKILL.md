@@ -1,6 +1,6 @@
 ---
 name: bubble-story-event-guide-config
-description: Configure Bubble project stories, dialogues, events, and new-player tutorials through the team's request pools, END-below draft workflow, project evidence, ID allocation, cross-table linking, and QA. Use for 剧情、事件、事件内对话、新手引导、需求池待配置 or related work under the two AI configuration directories; do not use for unrelated Bubble configuration tables.
+description: Configure Bubble project stories, dialogues, events, and new-player tutorials through the team's request pools, output-copy-only workflow, project evidence, ID allocation, cross-table linking, and QA. Use for 剧情、事件、事件内对话、新手引导、需求池待配置 or related work under the two AI configuration directories; do not use for unrelated Bubble configuration tables.
 metadata:
   author: Bubble project
   version: "1.1.1"
@@ -32,9 +32,9 @@ metadata:
 
 ## 不可破坏的边界
 
-- `策划/配置表/Table` 是只读正式源；只在本次输出目录的工作簿副本中修改。
-- 默认把新增或修改行写在每个目标 Sheet 的 A 列首个严格等于 `END` 的行下方；不移动、不覆盖、不新增第二个 `END`。
-- 未经用户明确授权“激活/写入正式区”，不得把草案移到 `END` 上方，也不得宣称已经导表或游戏内生效。
+- `策划/配置表/Table` 和项目内其他正式文件都是只读正式源；只在本次输出目录的工作簿/文件副本中修改。
+- 草案写入位置按目标表 schema、输出副本结构和可追踪性决定，不强制放在 `END` 下方。若目标格式存在 `END` 导出截止标记，必须在副本中保留其位置和语义，但不得为了满足旧流程移动或改写正式区。
+- 本 Skill 永不修改正式文件、正式工作簿或正式导出区；“激活/写入正式区”只能作为交付给人工/项目发布流程的后续动作，不能由 AI 在本任务中执行。
 - 保留 6 行协议头、Sheet 名、字段拼写、样式、公式、图片、隐藏状态和数据验证。数组与代码解析的复合字符串必须是严格 JSON。
 - 玩家可见文字进入 `tlanguage_cn`；业务表只引用语言 ID。
 - ID 在正确作用域内按现有业务段和父子前缀分配；先列候选、查冲突，再写表。禁止把 Trigger ID、Pool 行 ID、groupId 和具体 Event ID 混用。
@@ -45,8 +45,8 @@ metadata:
 1. 筛选有效待配置行并锁定为“配置中”。若无法安全继续，把状态恢复为“待配置”并写明需要确认的原因。
 2. 建立 S/T/D/A 证据包、工作簿归属计划、ID 台账和完整触发结论。
 3. 先生成叶子数据和依赖，再串顶层入口；跨域链按 [统一工作流](references/unified-workflow.md) 的依赖顺序执行。
-4. 在输出副本的 `END` 下方生成草案；修改正式行时，把原行完整复制到草案区再提出修改。
-5. 保存后重新打开所有工作簿，做结构、JSON、公式、ID、外键、文本、触发、存档/中断和视觉 QA。可用时执行项目导表器；没有实机验证时明确写“仅静态可用”。
+4. 只在输出目录的副本中生成草案；草案可放在副本中最适合审核和后续导入的位置。修改既有正式行时，先在副本中保留原行并提出变更，不触碰正式文件。
+5. 保存后重新打开所有副本，做结构、JSON、公式、ID、外键、文本、触发、存档/中断和视觉 QA。禁止对正式文件执行写入、导表或覆盖；没有实机验证时明确写“仅静态可用”。
 6. 成功后回填活动池的表、ID、输出路径、假设、待确认项和完成时间，并更新为“已完成”。
 7. 交付工作簿、`generation-manifest.json`、配置记录、预览或渲染证据、QA 结果、测试步骤和成熟度。不要只交付文字分析。
 
